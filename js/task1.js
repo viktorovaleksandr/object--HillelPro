@@ -1,7 +1,3 @@
-// Написать две функции:
-// 1) выведет список студентов и средний бал каждого
-// 2) выведен средний бал по всем студентам
-
 const students = [
     {
       name: 'John Smith',
@@ -21,20 +17,21 @@ const students = [
     }
 ]	
 
-function averageMarks(arg) {
-	return arg.marks.reduce((acc, item) => acc + item,0) / arg.marks.length;
+function averageMarks(students) {
+	return students.marks.reduce((acc, item) => acc + item,0) / students.marks.length;
 }
 
-function averageMarkGroup(arg) {
-	const sumMaks = arg.reduce((acc, item) => acc + averageMarks(item),0);
+function averageMarkGroup(students) {
+	const sumMaks = students.reduce((acc, item) => acc + averageMarks(item),0);
 	const average = Math.round(sumMaks / students.length);
 	return average;
 }
 
-function showResults(arg) {
-	for (const key of arg) {
-		console.log(`${key.name} \nAverage mark: ${averageMarks(key)}`);
-	}	console.log(`Average mark group: ${averageMarkGroup(students)}`);
+function showResults(students) {
+	for (const student of students) {
+	 console.log(`${student.name} \nAverage mark: ${averageMarks(student)}`);
+	}	
+  console.log(`Average mark group: ${averageMarkGroup(students)}`);
 }
 showResults(students);
 
